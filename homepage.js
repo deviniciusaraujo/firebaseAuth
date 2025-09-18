@@ -1,14 +1,22 @@
 //importa as funções necessatias do firebase 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"
-import { getAuth, GoogleProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"
-import { getFiretore, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"
+import { getAuth, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"
+import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"
 
 //configuração do firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyDniwR1JWARqDFg40hEdF4BvXhjNNuAxyo",
+    authDomain: "openidconnect-3e4a0.firebaseapp.com",
+    projectId: "openidconnect-3e4a0",
+    storageBucket: "openidconnect-3e4a0.firebasestorage.app",
+    messagingSenderId: "188787300177",
+    appId: "1:188787300177:web:c3e89fb7e54835ab282570"
+  }
 
 //inicializa o firebase
 const app = initializeApp(firebaseConfig)
 const auth = getAuth() //configura o firebase authentication
-const db = getFiresyore() //conecta ao firestore
+const db = getFirestore() //conecta ao firestore
 
 //monitora o estado de autenticação do usuário
 onAuthStateChanged(auth, (user) => {
@@ -27,13 +35,13 @@ onAuthStateChanged(auth, (user) => {
                     const userData = docSnap.data();
                     document.getElementById('loggedUserFName').innerText = userData.firstName;
                     document.getElementById('loggedUserEmail').innerText = userData.email;
-                    document.getElementById('loggedUserFName').innerText = userData.lastName;
+                    document.getElementById('loggedUserLName').innerText = userData.lastName;
                 } else {
                     console.log("ID não encontrado no documento");
                 }
             })
             .catch((error) => {
-                console.log("documento não encontrado")
+                console.log("documento não encontrado");
             });
     } else {
         console.log("ID não encontrado no localStorage");

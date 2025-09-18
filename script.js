@@ -14,6 +14,6 @@ signUpButton.addEventListener('click', function() {
 //quando o botão de login é clicado, esconde o formulário de cadastro
 //e mostra o de login
 signInButton.addEventListener('click', function() {
-    signInForm.style.display = "clock"
+    signInForm.style.display = "block"
     signUpForm.style.display = "none"
 })
